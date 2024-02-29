@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'crispy_forms',
+    'products',
+
+    # TODO: Remove after finish dev - Debug_toolbar
     'debug_toolbar',
 ]
 
@@ -152,7 +155,16 @@ MESSAGE_TAGS = {
     constants.WARNING: 'message-warning',
 }
 
-# Django Debu Toolbar
+# TODO: Remove after finish dev - Debug_toolbar
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+# Sessão em dias: 60s * 60m * 24h * 1d
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 7
+
+# Salvar a cada requisição
+SESSION_SAVE_EVERY_REQUEST = False
+
+# Serializar - Padrão JSON
+# SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
