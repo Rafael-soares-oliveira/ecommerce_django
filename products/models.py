@@ -29,17 +29,17 @@ class Product(models.Model):
         default=0,
         verbose_name=_('Price Marketing')
     )
-    price_marketing_offer = models.FloatField(
+    offer_price_marketing = models.FloatField(
         default=0,
-        verbose_name=_('Price Marketing Offer')
+        verbose_name=_('Offer Price Marketing')
     )
     product_type = models.CharField(
         default='V',
         max_length=1,
         verbose_name=_('Product Type'),
         choices=(
-            ('V', 'Variable'),
-            ('S', 'Simple'),
+            ('V', _('Variable')),
+            ('S', _('Simple')),
         )
     )
 
@@ -102,17 +102,14 @@ class ProductVariation(models.Model):
         default=0,
         verbose_name=_('Price')
     )
-    price_offer = models.FloatField(
+    offer_price = models.FloatField(
         default=0,
-        verbose_name=_('Price Offer')
+        verbose_name=_('Offer Price')
     )
     stock = models.PositiveIntegerField(
         default=0,
         verbose_name=_('Stock')
     )
-
-    def __str__(self) -> str:
-        return self.variation_name
 
     class Meta:
         verbose_name = _('Product Variation')

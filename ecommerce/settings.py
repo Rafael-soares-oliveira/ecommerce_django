@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'crispy_forms',
     'products',
+    'orders',
 
     # TODO: Remove after finish dev - Debug_toolbar
     'debug_toolbar',
