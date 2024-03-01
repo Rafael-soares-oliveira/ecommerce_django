@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Products
+from .models import Product, ProductVariation
 
 
-@admin.register(Products)
-class ProductAdmin(admin.ModelAdmin):
+@admin.register(Product)
+class ProductSiteAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         "slug": ('product_name',)
     }
@@ -12,3 +12,8 @@ class ProductAdmin(admin.ModelAdmin):
     ordering = ['-id']
     list_per_page = 30
     search_fields = ['product_name']
+
+
+@admin.register(ProductVariation)
+class ProductStockAdmin(admin.ModelAdmin):
+    ...

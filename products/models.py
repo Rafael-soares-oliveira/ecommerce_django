@@ -8,7 +8,7 @@ from collections import defaultdict
 from django.forms import ValidationError
 
 
-class Products(models.Model):
+class Product(models.Model):
     product_name = models.CharField(
         max_length=255,
         verbose_name=_('Product Name')
@@ -21,7 +21,7 @@ class Products(models.Model):
         verbose_name=_('Long Description')
     )
     product_image = models.ImageField(
-        upload_to='products_image/%Y/%m/',
+        upload_to='product_image/%Y/%m/',
         blank=True, null=True,
         verbose_name=_('Product Image')
     )
@@ -45,7 +45,7 @@ class Products(models.Model):
     )
 
     def __str__(self) -> str:
-        return self.product_name
+        return self.name
 
     # Resize image
     @staticmethod
@@ -85,11 +85,11 @@ class Products(models.Model):
     # Return error when two products have the same name
     def clean(self, *args, **kwargs):
         error_messages = defaultdict(list)
-        products_from_db = Products.objects.filter(
-            name__iexact=self.product_name).first()
+        products_from_db = Product.objects.filter(
+            product_name__iexact=self.product_name).first()
         if products_from_db:
             if products_from_db.pk != self.pk:
-                error_messages['name'].append(
+                error_messages['product_name'].append(
                     _('Found products with the same name')
                 )
 
@@ -101,14 +101,16 @@ class Products(models.Model):
         verbose_name_plural = _('Products')
 
 
-class Variation(models.Model):
+class ProductVariation(models.Model):
     product = models.ForeignKey(
-        Products,
+        Product,
         on_delete=models.CASCADE,
-        verbose_name=_('Product')
+        verbose_name=_('Product Name')
     )
     name = models.CharField(
-        max_length=255,
+        max_length=50,
+        blank=True,
+        null=True,
         verbose_name=_('Name')
     )
     price = models.FloatField(
@@ -126,3 +128,7 @@ class Variation(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+    class Meta:
+        verbose_name = _('Product Variation')
+        verbose_name_plural = _('Product Variations')

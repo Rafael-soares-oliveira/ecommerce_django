@@ -1,10 +1,10 @@
 from django.views.generic import ListView
-from products.models import Products
+from products.models import Product
 
 
 class ProductsViewBase(ListView):
-    model = Products
-    context_object_name = 'products'
+    model = Product
+    context_object_name = 'product_site'
     ordering = ['-id']
 
 
