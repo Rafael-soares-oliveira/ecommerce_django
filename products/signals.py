@@ -6,7 +6,7 @@ import os
 
 def delete_image(instance):
     try:
-        os.remove(instance.image.path)
+        os.remove(instance.product_image.path)
     except (ValueError, FileNotFoundError):
         ...
 
@@ -26,6 +26,6 @@ def image_update(sender, instance, *args, **kwargs):
     if not old_instance:
         return
 
-    is_new_image = old_instance.image != instance.image
+    is_new_image = old_instance.product_image != instance.product_image
     if is_new_image:
         delete_image(old_instance)

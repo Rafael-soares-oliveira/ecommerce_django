@@ -73,9 +73,9 @@ class Product(models.Model):
 
         saved = super().save(*args, **kwargs)
 
-        if self.image:
+        if self.product_image:
             try:
-                self.resize_image(self.image, 800)
+                self.resize_image(self.product_image, 800)
             except FileNotFoundError:
                 ...
 
