@@ -4,7 +4,7 @@ from products.models import Product
 
 class ProductsViewBase(ListView):
     model = Product
-    context_object_name = 'product_site'
+    context_object_name = 'products'
     ordering = ['-id']
 
 

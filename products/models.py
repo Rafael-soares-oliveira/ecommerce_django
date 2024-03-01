@@ -4,14 +4,13 @@ from django.utils.text import slugify
 import os
 from django.conf import settings
 from PIL import Image
-from collections import defaultdict
-from django.forms import ValidationError
 
 
 class Product(models.Model):
     product_name = models.CharField(
         max_length=255,
-        verbose_name=_('Product Name')
+        unique=True,
+        verbose_name=_('Name')
     )
     short_description = models.TextField(
         max_length=255,
@@ -23,7 +22,7 @@ class Product(models.Model):
     product_image = models.ImageField(
         upload_to='product_image/%Y/%m/',
         blank=True, null=True,
-        verbose_name=_('Product Image')
+        verbose_name=_('Image')
     )
     slug = models.SlugField(unique=True)
     price_marketing = models.FloatField(
@@ -45,7 +44,7 @@ class Product(models.Model):
     )
 
     def __str__(self) -> str:
-        return self.name
+        return self.product_name
 
     # Resize image
     @staticmethod
@@ -74,27 +73,13 @@ class Product(models.Model):
 
         saved = super().save(*args, **kwargs)
 
-        if self.product_image:
+        if self.image:
             try:
-                self.resize_image(self.product_image, 800)
+                self.resize_image(self.image, 800)
             except FileNotFoundError:
                 ...
 
         return saved
-
-    # Return error when two products have the same name
-    def clean(self, *args, **kwargs):
-        error_messages = defaultdict(list)
-        products_from_db = Product.objects.filter(
-            product_name__iexact=self.product_name).first()
-        if products_from_db:
-            if products_from_db.pk != self.pk:
-                error_messages['product_name'].append(
-                    _('Found products with the same name')
-                )
-
-        if error_messages:
-            raise ValidationError(error_messages)
 
     class Meta:
         verbose_name = _('Product')
@@ -105,13 +90,13 @@ class ProductVariation(models.Model):
     product = models.ForeignKey(
         Product,
         on_delete=models.CASCADE,
-        verbose_name=_('Product Name')
+        verbose_name=_('Product')
     )
-    name = models.CharField(
+    variation_name = models.CharField(
         max_length=50,
         blank=True,
         null=True,
-        verbose_name=_('Name')
+        verbose_name=_('Variation Name')
     )
     price = models.FloatField(
         default=0,
@@ -127,7 +112,7 @@ class ProductVariation(models.Model):
     )
 
     def __str__(self) -> str:
-        return self.name
+        return self.variation_name
 
     class Meta:
         verbose_name = _('Product Variation')
