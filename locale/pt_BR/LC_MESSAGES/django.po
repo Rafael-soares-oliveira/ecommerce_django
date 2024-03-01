@@ -1,0 +1,199 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-01 16:25-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\orders\models.py:10 .\user_profile\models.py:14
+msgid "User"
+msgstr "Usuário"
+
+#: .\orders\models.py:20
+msgid "Approved"
+msgstr "Aprovado"
+
+#: .\orders\models.py:21
+msgid "Created"
+msgstr "Criado"
+
+#: .\orders\models.py:22
+msgid "Reproved"
+msgstr "Reprovado"
+
+#: .\orders\models.py:23
+msgid "Pending"
+msgstr "Pendente"
+
+#: .\orders\models.py:24
+msgid "S"
+msgstr "E"
+
+#: .\orders\models.py:24
+msgid "Sent"
+msgstr "Enviado"
+
+#: .\orders\models.py:25
+msgid "Finished"
+msgstr "Finalizado"
+
+#: .\orders\models.py:33 .\orders\models.py:41
+msgid "Order"
+msgstr "Pedido"
+
+#: .\orders\models.py:34
+msgid "Orders"
+msgstr "Pedidos"
+
+#: .\orders\models.py:45 .\products\models.py:85 .\products\models.py:93
+msgid "Product"
+msgstr "Produto"
+
+#: .\orders\models.py:48
+msgid "Product ID"
+msgstr "ID do Produto"
+
+#: .\orders\models.py:52 .\products\models.py:115
+msgid "Product Variation"
+msgstr "Variação do Produto"
+
+#: .\orders\models.py:55
+msgid "Product Variation ID"
+msgstr "ID da Varição do Produto"
+
+#: .\orders\models.py:58 .\products\models.py:103
+msgid "Price"
+msgstr "Preço"
+
+#: .\orders\models.py:62 .\products\models.py:107
+msgid "Offer Price"
+msgstr "Preço de oferta"
+
+#: .\orders\models.py:65
+msgid "Quantity"
+msgstr "Quantidade"
+
+#: .\orders\models.py:69
+msgid "Product Image"
+msgstr "Imagem do Produto"
+
+#: .\orders\models.py:76
+msgid "Order Item"
+msgstr "Item do Pedido"
+
+#: .\orders\models.py:77
+msgid "Order Items"
+msgstr "Itens do Pedido"
+
+#: .\products\models.py:13
+msgid "Name"
+msgstr "Nome"
+
+#: .\products\models.py:17
+msgid "Short Description"
+msgstr "Descrição Curta"
+
+#: .\products\models.py:20
+msgid "Long Description"
+msgstr "Descrição Longa"
+
+#: .\products\models.py:25
+msgid "Image"
+msgstr "Imagem"
+
+#: .\products\models.py:30
+msgid "Price Marketing"
+msgstr "Preço de Marketing"
+
+#: .\products\models.py:34
+msgid "Offer Price Marketing"
+msgstr "Preço Oferta de Marketing"
+
+#: .\products\models.py:39
+msgid "Product Type"
+msgstr "Tipo do Produto"
+
+#: .\products\models.py:41
+msgid "Variable"
+msgstr "Variável"
+
+#: .\products\models.py:42
+msgid "Simple"
+msgstr "Simples"
+
+#: .\products\models.py:86
+msgid "Products"
+msgstr "Produtos"
+
+#: .\products\models.py:99
+msgid "Variation Name"
+msgstr "Nome da Variação"
+
+#: .\products\models.py:111
+msgid "Stock"
+msgstr "Estoque"
+
+#: .\products\models.py:116
+msgid "Product Variations"
+msgstr "Variações do Produto"
+
+#: .\templates\products\home.html:4
+msgid "Home"
+msgstr "Página Inicial"
+
+#: .\user_profile\models.py:17
+msgid "Birth Date"
+msgstr "Data de Nascimento"
+
+#: .\user_profile\models.py:26
+msgid "Address"
+msgstr "Endereço"
+
+#: .\user_profile\models.py:30
+msgid "Address Number"
+msgstr "Número do Endereço"
+
+#: .\user_profile\models.py:36
+msgid "Address Complement"
+msgstr "Complemento do Endereço"
+
+#: .\user_profile\models.py:40
+msgid "Neighborhood"
+msgstr "Bairro"
+
+#: .\user_profile\models.py:48
+msgid "City"
+msgstr "Cidade"
+
+#: .\user_profile\models.py:52
+msgid "State"
+msgstr "Estado"
+
+#: .\user_profile\models.py:93
+msgid "CPF must have 11 characters, only numbers"
+msgstr "CPF deve ter 11 caracteres, apenas números"
+
+#: .\user_profile\models.py:100
+msgid "CPF Invalid"
+msgstr "CPF Inválido"
+
+#: .\user_profile\models.py:107
+msgid "User Profile"
+msgstr "Perfil do Usuário"
+
+#: .\user_profile\models.py:108
+msgid "Users Profile"
+msgstr "Perfil dos Usuários"

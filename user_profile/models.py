@@ -87,6 +87,7 @@ class UserProfile(models.Model):
     def clean(self, *args, **kwargs):
         error_messages = defaultdict(list)
         user_cpf = re.sub(r'[^0-9]', '', self.cpf)
+        user_cep = re.sub(r'[^0-9]', '', self.cep)
 
         if len(user_cpf) != 11:
             error_messages['cpf'].append(
@@ -99,6 +100,11 @@ class UserProfile(models.Model):
                 error_messages['cpf'].append(
                     _('CPF Invalid')
                 )
+
+        if len(user_cep) != 8:
+            error_messages['cep'].append(
+                _('CEP Invalid')
+            )
 
         if error_messages:
             raise ValidationError(error_messages)

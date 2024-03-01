@@ -21,7 +21,7 @@ class Order(models.Model):
             ('C', _('Created')),
             ('R', _('Reproved')),
             ('P', _('Pending')),
-            (_('E'), _('Sent')),
+            (_('S'), _('Sent')),
             ('F', _('Finished')),
         ]
     )
