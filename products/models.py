@@ -24,14 +24,16 @@ class Product(models.Model):
         blank=True, null=True,
         verbose_name=_('Image')
     )
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(
+        max_length=255,
+        unique=True)
     price_marketing = models.FloatField(
         default=0,
-        verbose_name=_('Price Marketing')
+        verbose_name=_('Price')
     )
     offer_price_marketing = models.FloatField(
         default=0,
-        verbose_name=_('Offer Price Marketing')
+        verbose_name=_('Offer Price')
     )
     product_type = models.CharField(
         default='V',
@@ -42,6 +44,14 @@ class Product(models.Model):
             ('S', _('Simple')),
         )
     )
+
+    def get_price_marketing(self):
+        return f'R$ {self.price_marketing:.2f}'.replace('.', ',')
+    get_price_marketing.short_description = _('Price')
+
+    def get_offer_price_marketing(self):
+        return f'R$ {self.offer_price_marketing:.2f}'.replace('.', ',')
+    get_offer_price_marketing.short_description = _('Offer Price')
 
     def __str__(self) -> str:
         return self.product_name

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-01 16:25-0300\n"
+"POT-Creation-Date: 2024-03-01 18:46-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,7 +58,7 @@ msgstr "Pedido"
 msgid "Orders"
 msgstr "Pedidos"
 
-#: .\orders\models.py:45 .\products\models.py:85 .\products\models.py:93
+#: .\orders\models.py:45 .\products\models.py:93 .\products\models.py:101
 msgid "Product"
 msgstr "Produto"
 
@@ -66,7 +66,7 @@ msgstr "Produto"
 msgid "Product ID"
 msgstr "ID do Produto"
 
-#: .\orders\models.py:52 .\products\models.py:115
+#: .\orders\models.py:52 .\products\models.py:123
 msgid "Product Variation"
 msgstr "Variação do Produto"
 
@@ -74,11 +74,13 @@ msgstr "Variação do Produto"
 msgid "Product Variation ID"
 msgstr "ID da Varição do Produto"
 
-#: .\orders\models.py:58 .\products\models.py:103
+#: .\orders\models.py:58 .\products\models.py:30 .\products\models.py:48
+#: .\products\models.py:111
 msgid "Price"
 msgstr "Preço"
 
-#: .\orders\models.py:62 .\products\models.py:107
+#: .\orders\models.py:62 .\products\models.py:34 .\products\models.py:52
+#: .\products\models.py:115
 msgid "Offer Price"
 msgstr "Preço de oferta"
 
@@ -114,14 +116,6 @@ msgstr "Descrição Longa"
 msgid "Image"
 msgstr "Imagem"
 
-#: .\products\models.py:30
-msgid "Price Marketing"
-msgstr "Preço de Marketing"
-
-#: .\products\models.py:34
-msgid "Offer Price Marketing"
-msgstr "Preço Oferta de Marketing"
-
 #: .\products\models.py:39
 msgid "Product Type"
 msgstr "Tipo do Produto"
@@ -134,19 +128,19 @@ msgstr "Variável"
 msgid "Simple"
 msgstr "Simples"
 
-#: .\products\models.py:86
+#: .\products\models.py:94
 msgid "Products"
 msgstr "Produtos"
 
-#: .\products\models.py:99
+#: .\products\models.py:107
 msgid "Variation Name"
 msgstr "Nome da Variação"
 
-#: .\products\models.py:111
+#: .\products\models.py:119
 msgid "Stock"
 msgstr "Estoque"
 
-#: .\products\models.py:116
+#: .\products\models.py:124
 msgid "Product Variations"
 msgstr "Variações do Produto"
 
@@ -182,18 +176,22 @@ msgstr "Cidade"
 msgid "State"
 msgstr "Estado"
 
-#: .\user_profile\models.py:93
+#: .\user_profile\models.py:94
 msgid "CPF must have 11 characters, only numbers"
 msgstr "CPF deve ter 11 caracteres, apenas números"
 
-#: .\user_profile\models.py:100
+#: .\user_profile\models.py:101
 msgid "CPF Invalid"
 msgstr "CPF Inválido"
 
-#: .\user_profile\models.py:107
+#: .\user_profile\models.py:106
+msgid "CEP Invalid"
+msgstr "CEP Inválido"
+
+#: .\user_profile\models.py:113
 msgid "User Profile"
 msgstr "Perfil do Usuário"
 
-#: .\user_profile\models.py:108
+#: .\user_profile\models.py:114
 msgid "Users Profile"
 msgstr "Perfil dos Usuários"

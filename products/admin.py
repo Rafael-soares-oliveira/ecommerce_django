@@ -12,7 +12,8 @@ class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         "slug": ('product_name',)
     }
-    list_display = ['id', 'product_name']
+    list_display = ['product_name', 'short_description',
+                    'get_price_marketing', 'get_offer_price_marketing']
     list_display_links = ['product_name']
     ordering = ['-id']
     list_per_page = 30
