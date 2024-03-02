@@ -4,12 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock title %}Ecommerce XYZ</title>
+    <title>{% block title %}{% endblock title %}XYZ</title>
     {% include "base/links.html" %}
 </head>
 <body>
-    {% block content %}
+    {% include "base/header.html" %}
+    <main>
+        {% block content %}
 
-    {% endblock content %}
+        {% endblock content %}
+    </main>
+    {% include "base/footer.html" %}
 </body>
 </html>
