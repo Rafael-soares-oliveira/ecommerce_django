@@ -1,3 +1,13 @@
-from django.shortcuts import render
+from django.views.generic import View
 
-# Create your views here.
+
+class Payment(View):
+    pass
+
+
+class FinishOrder(View):
+    pass
+
+
+class OrderDetail(View):
+    pass

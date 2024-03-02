@@ -18,10 +18,16 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.utils.translation import gettext as _
+
+orders = _('orders/')
+profile = _('profile/')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('products.urls')),
+    path(orders, include('orders.urls')),
+    path(profile, include('user_profile.urls')),
     path('__debug__/', include('debug_toolbar.urls')),
 ]
 
