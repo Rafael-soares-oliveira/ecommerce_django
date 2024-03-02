@@ -1,24 +1,25 @@
 {% load i18n %}
 
-<div class="product product-list-item">
+<div class="product">
     <div class="product-image">
-        <img src="{{ product.product_image }}" alt="">
+        <a href="#">
+            <img src="{{ product.product_image.url }}" alt="Card image cap">
+        </a>
     </div>
-    <div class="product-content">
-        <div class="product-price-offer">
-            <a href="">
-                <h2>{{ product.price_marketing }}</h2>
-            </a>
-        </div>
-        <div class="product-price">
-            <a href="">
-                <h2>{{ product.offer_price_marketing }}</h2>
-            </a>
-        </div>
-        <div class="product-name">
-            <a href="">
-                <h2>{{ product.product_name }}</h2>
-            </a>
+    <div>
+        <h5 class="product-name"><a href="#">{{ product.get_short_name }}</a></h5>
+        <div class='price'>
+            <span class="product-price product-price-muted">
+                {{ product.get_price_marketing }}
+            </span>
+            <span class="product-price-offer">
+                {{ product.get_offer_price_marketing }}
+            </span>
         </div>
     </div>
 </div>
+
+
+
+
+

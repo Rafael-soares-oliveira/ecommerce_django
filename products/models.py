@@ -8,7 +8,7 @@ from PIL import Image
 
 class Product(models.Model):
     product_name = models.CharField(
-        max_length=255,
+        max_length=55,
         unique=True,
         verbose_name=_('Name')
     )
@@ -20,8 +20,9 @@ class Product(models.Model):
         verbose_name=_('Long Description')
     )
     product_image = models.ImageField(
-        upload_to='product_image/%Y/%m/',
-        blank=True, null=True,
+        upload_to='media/product_image/%Y/%m/%d',
+        blank=True,
+        default='',
         verbose_name=_('Image')
     )
     slug = models.SlugField(
@@ -53,21 +54,16 @@ class Product(models.Model):
         return f'R$ {self.offer_price_marketing:.2f}'.replace('.', ',')
     get_offer_price_marketing.short_description = _('Offer Price')
 
-    def __str__(self) -> str:
-        return self.product_name
+    def get_short_name(self):
+        return f'{(self.product_name)[:55]}...'
 
     # Resize image
     @staticmethod
-    def resize_image(image, new_width=800):
+    def resize_image(image, new_width=800, new_height=800):
         image_full_path = os.path.join(settings.MEDIA_ROOT, image.name)
         image_pillow = Image.open(image_full_path)
         original_width, original_height = image_pillow.size
 
-        if original_width <= new_width:
-            image_pillow.close()
-            return
-
-        new_height = round(new_width * original_height / original_width)
         new_image = image_pillow.resize((new_width, new_height), Image.LANCZOS)
         new_image.save(
             image_full_path,
@@ -81,15 +77,13 @@ class Product(models.Model):
             slug = f'{slugify(self.product_name)}'
             self.slug = slug
 
-        saved = super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
         if self.product_image:
-            try:
-                self.resize_image(self.product_image, 800)
-            except FileNotFoundError:
-                ...
+            self.resize_image(self.product_image, 800)
 
-        return saved
+    def __str__(self) -> str:
+        return self.product_name
 
     class Meta:
         verbose_name = _('Product')
