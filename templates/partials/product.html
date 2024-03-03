@@ -3,18 +3,25 @@
 <div class="product">
     <div class="product-image">
         <a href="#">
-            <img src="{{ product.product_image.url }}" alt="Card image cap">
+            <img src="{{ product.product.product_image.url }}" alt="Card image cap">
         </a>
     </div>
     <div>
-        <h5 class="product-name"><a href="#">{{ product.get_short_name }}</a></h5>
+        <h5 class="product-name"><a href="#">{{ product.product.get_short_name }}</a></h5>
         <div class='price'>
-            <span class="product-price product-price-muted">
-                {{ product.get_price_marketing }}
-            </span>
-            <span class="product-price-offer">
-                {{ product.get_offer_price_marketing }}
-            </span>
+            {% if product.offer_price %}
+                <span class="product-price-muted">
+                    {{ product.get_price }}
+                </span>
+                <span class="product-price">
+                    {{ product.get_offer_price }}
+                </span>
+            {% else %}
+                <span class="product-price">
+                    {{ product.get_price }}
+                </span>
+            {% endif %}
+            
         </div>
     </div>
 </div>

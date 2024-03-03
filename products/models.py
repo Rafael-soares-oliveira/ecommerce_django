@@ -28,14 +28,6 @@ class Product(models.Model):
     slug = models.SlugField(
         max_length=255,
         unique=True)
-    price_marketing = models.FloatField(
-        default=0,
-        verbose_name=_('Price')
-    )
-    offer_price_marketing = models.FloatField(
-        default=0,
-        verbose_name=_('Offer Price')
-    )
     product_type = models.CharField(
         default='V',
         max_length=1,
@@ -45,14 +37,6 @@ class Product(models.Model):
             ('S', _('Simple')),
         )
     )
-
-    def get_price_marketing(self):
-        return f'R$ {self.price_marketing:.2f}'.replace('.', ',')
-    get_price_marketing.short_description = _('Price')
-
-    def get_offer_price_marketing(self):
-        return f'R$ {self.offer_price_marketing:.2f}'.replace('.', ',')
-    get_offer_price_marketing.short_description = _('Offer Price')
 
     def get_short_name(self):
         return f'{(self.product_name)[:55]}...'
@@ -107,13 +91,20 @@ class ProductVariation(models.Model):
         verbose_name=_('Price')
     )
     offer_price = models.FloatField(
-        default=0,
+        blank=True,
+        null=True,
         verbose_name=_('Offer Price')
     )
     stock = models.PositiveIntegerField(
         default=0,
         verbose_name=_('Stock')
     )
+
+    def get_price(self):
+        return f'R$ {self.price:.2f}'.replace('.', ',')
+
+    def get_offer_price(self):
+        return f'R$ {self.offer_price:.2f}'.replace('.', ',')
 
     class Meta:
         verbose_name = _('Product Variation')

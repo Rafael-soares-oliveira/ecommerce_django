@@ -1,12 +1,12 @@
 from django.views.generic import ListView, DetailView, View
-from products.models import Product
+from products.models import Product, ProductVariation
 import os
 
 PER_PAGE = os.environ.get('PER_PAGE', 6)
 
 
 class ProductsViewBase(ListView):
-    model = Product
+    model = ProductVariation
     context_object_name = 'products'
     ordering = ['-id']
 

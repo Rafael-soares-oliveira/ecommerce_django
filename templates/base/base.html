@@ -8,10 +8,13 @@
     <title>{% block title %}{% endblock title %}XYZ</title>
 </head>
 <body>
+    {% include "base/menu.html" %}
     {% include "base/header.html" %}
-    <main>
+    {% include "base/search.html" %}
+    <main class='main-content'>
         {% block content %}{% endblock content %}
     </main>
     {% include "base/footer.html" %}
+    <script src="{% static "js/scripts.js" %}"></script>
 </body>
 </html>
