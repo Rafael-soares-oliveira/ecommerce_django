@@ -9,6 +9,7 @@ class ProductsViewBase(ListView):
     model = ProductVariation
     context_object_name = 'products'
     ordering = ['-id']
+    paginate_by = 3
 
 
 class ProductsViewHome(ProductsViewBase):
