@@ -4,6 +4,7 @@ from django.utils.text import slugify
 import os
 from django.conf import settings
 from PIL import Image
+from utils.convert_str import convert_str
 
 
 class Product(models.Model):
@@ -11,6 +12,10 @@ class Product(models.Model):
         max_length=55,
         unique=True,
         verbose_name=_('Name')
+    )
+    slug = models.SlugField(
+        max_length=255,
+        unique=True
     )
     short_description = models.TextField(
         max_length=255,
@@ -25,9 +30,6 @@ class Product(models.Model):
         default='',
         verbose_name=_('Image')
     )
-    slug = models.SlugField(
-        max_length=255,
-        unique=True)
     product_type = models.CharField(
         default='V',
         max_length=1,
@@ -61,10 +63,36 @@ class Product(models.Model):
             slug = f'{slugify(self.product_name)}'
             self.slug = slug
 
-        super().save(*args, **kwargs)
-
         if self.product_image:
             self.resize_image(self.product_image, 800)
+
+        super().save(force_update=True, *args, **kwargs)
+
+    def get_min_price(self):
+        price = ProductVariation.objects.filter(
+            product_id__exact=self.pk).values(
+                'price').aggregate(models.Min('price'))['price__min']
+        return price
+
+    def get_price(self):
+        price = self.get_min_price()
+        return convert_str(price)
+    get_price.short_description = _('Base Price')
+
+    def get_min_offer_price(self):
+        price_offer = ProductVariation.objects.filter(
+            product_id__exact=self.pk, offer_price__gt=0).values(
+                'offer_price').aggregate(
+                    models.Min('offer_price'))['offer_price__min']
+        if price_offer is None:
+            return 0
+        else:
+            return price_offer
+
+    def get_offer_price(self):
+        price = self.get_min_offer_price()
+        return convert_str(price)
+    get_offer_price.short_description = _('Base Offer Price')
 
     def __str__(self) -> str:
         return self.product_name
@@ -78,6 +106,7 @@ class ProductVariation(models.Model):
     product = models.ForeignKey(
         Product,
         on_delete=models.CASCADE,
+        related_name='variations',
         verbose_name=_('Product')
     )
     variation_name = models.CharField(
@@ -91,8 +120,7 @@ class ProductVariation(models.Model):
         verbose_name=_('Price')
     )
     offer_price = models.FloatField(
-        blank=True,
-        null=True,
+        default=0,
         verbose_name=_('Offer Price')
     )
     stock = models.PositiveIntegerField(

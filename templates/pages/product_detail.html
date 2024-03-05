@@ -1,8 +1,33 @@
 {% extends "base/base.html" %}
+
 {% load i18n %}
 
 {% block title %}{{ product.product_name }} | {% endblock title %}
 
 {% block content %}
-    
+
+    <div class="product">
+        <div class="product-image">
+            <a href="#">
+                <img src="{{ product.product_image.url }}" alt="Card image cap">
+            </a>
+        </div>
+        <div>
+            <h5 class="product-name"><a href="#">{{ product.get_short_name }}</a></h5>
+            <div class='price'>
+                {% if product.offer_price %}
+                    <span class="product-price-muted">
+                        {{ product.get_price }}
+                    </span>
+                    <span class="product-price">
+                        {{ product.get_offer_price }}
+                    </span>
+                {% else %}
+                    <span class="product-price">
+                        {{ product.get_price }}
+                    </span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 {% endblock content %}

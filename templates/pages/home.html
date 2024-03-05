@@ -4,9 +4,34 @@
 {% block title %}{% translate "Home" %} | {% endblock title %}
 
 {% block content %}
-<div class="main-content-list">
-    {% for product in products %}
-        {% include "partials/product.html" %}
-    {% endfor %}
-</div>
+    <div class="main-content-list">
+        {% for product in products %}
+            <div class="product">
+                <div class="product-image">
+                    <a href="#">
+                        <img src="{{ product.product_image.url }}" alt="Card image cap">
+                    </a>
+                </div>
+                <div>
+                    <a href="{% url 'products:product_detail' product.slug %}">
+                        <h5 class="product-name">{{ product.get_short_name }}</h5>
+                    </a>
+                    <div class='price'>
+                        {% if product.get_min_offer_price != 0 %}
+                            <span class="product-price-muted">
+                                {{ product.get_price }}
+                            </span>
+                            <span class="product-price">
+                                {% translate "From" %} {{ product.get_offer_price }}
+                            </span>
+                        {% else %}
+                            <span class="product-price">
+                                {% translate "From" %} {{ product.get_price }}
+                            </span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock content %}

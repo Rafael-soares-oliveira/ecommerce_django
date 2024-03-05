@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-01 18:46-0300\n"
+"POT-Creation-Date: 2024-03-05 01:20-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\ecommerce\urls.py:23
+msgid "orders/"
+msgstr "pedidos/"
+
+#: .\ecommerce\urls.py:24
+msgid "profile/"
+msgstr "perfil/"
 
 #: .\orders\models.py:10 .\user_profile\models.py:14
 msgid "User"
@@ -58,7 +66,7 @@ msgstr "Pedido"
 msgid "Orders"
 msgstr "Pedidos"
 
-#: .\orders\models.py:45 .\products\models.py:93 .\products\models.py:101
+#: .\orders\models.py:45 .\products\models.py:111 .\products\models.py:120
 msgid "Product"
 msgstr "Produto"
 
@@ -66,7 +74,7 @@ msgstr "Produto"
 msgid "Product ID"
 msgstr "ID do Produto"
 
-#: .\orders\models.py:52 .\products\models.py:123
+#: .\orders\models.py:52 .\products\models.py:148
 msgid "Product Variation"
 msgstr "Variação do Produto"
 
@@ -74,13 +82,11 @@ msgstr "Variação do Produto"
 msgid "Product Variation ID"
 msgstr "ID da Varição do Produto"
 
-#: .\orders\models.py:58 .\products\models.py:30 .\products\models.py:48
-#: .\products\models.py:111
+#: .\orders\models.py:58 .\products\models.py:130
 msgid "Price"
 msgstr "Preço"
 
-#: .\orders\models.py:62 .\products\models.py:34 .\products\models.py:52
-#: .\products\models.py:115
+#: .\orders\models.py:62 .\products\models.py:134
 msgid "Offer Price"
 msgstr "Preço de oferta"
 
@@ -104,49 +110,93 @@ msgstr "Itens do Pedido"
 msgid "Name"
 msgstr "Nome"
 
-#: .\products\models.py:17
+#: .\products\models.py:21
 msgid "Short Description"
 msgstr "Descrição Curta"
 
-#: .\products\models.py:20
+#: .\products\models.py:24
 msgid "Long Description"
 msgstr "Descrição Longa"
 
-#: .\products\models.py:25
+#: .\products\models.py:30
 msgid "Image"
 msgstr "Imagem"
 
-#: .\products\models.py:39
+#: .\products\models.py:34 .\products\models.py:101
+msgid "Base Price"
+msgstr "Preço Base"
+
+#: .\products\models.py:38 .\products\models.py:105
+msgid "Base Offer Price"
+msgstr "Preço de oferta Base"
+
+#: .\products\models.py:43
 msgid "Product Type"
 msgstr "Tipo do Produto"
 
-#: .\products\models.py:41
+#: .\products\models.py:45
 msgid "Variable"
 msgstr "Variável"
 
-#: .\products\models.py:42
+#: .\products\models.py:46
 msgid "Simple"
 msgstr "Simples"
 
-#: .\products\models.py:94
+#: .\products\models.py:112
 msgid "Products"
 msgstr "Produtos"
 
-#: .\products\models.py:107
+#: .\products\models.py:126
 msgid "Variation Name"
 msgstr "Nome da Variação"
 
-#: .\products\models.py:119
+#: .\products\models.py:138
 msgid "Stock"
 msgstr "Estoque"
 
-#: .\products\models.py:124
+#: .\products\models.py:149
 msgid "Product Variations"
 msgstr "Variações do Produto"
 
-#: .\templates\products\home.html:4
+#: .\templates\base\footer.html:4
+msgid "By"
+msgstr "Dev"
+
+#: .\templates\base\footer.html:7
+msgid "Powered by"
+msgstr "Produzido com"
+
+#: .\templates\base\menu.html:4
+msgid "Show menu"
+msgstr "Mostrar menu"
+
+#: .\templates\base\menu.html:10
+msgid "Close menu"
+msgstr "Fechar menu"
+
+#: .\templates\base\menu.html:15
+msgid "Register"
+msgstr "Registrar"
+
+#: .\templates\base\menu.html:16
+msgid "Login"
+msgstr "Acessar"
+
+#: .\templates\base\search.html:4
+msgid "Search product"
+msgstr "Procurar produto"
+
+#: .\templates\pages\cart.html:4
+msgid "Cart"
+msgstr "Carrinho"
+
+#: .\templates\pages\home.html:4
 msgid "Home"
 msgstr "Página Inicial"
+
+#: .\templates\partials\product.html:19 .\templates\partials\product.html:23
+msgid "From"
+msgstr "A partir de"
 
 #: .\user_profile\models.py:17
 msgid "Birth Date"

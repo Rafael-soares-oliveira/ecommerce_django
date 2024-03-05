@@ -10,9 +10,10 @@ class ProductVariationAdmin(admin.TabularInline):
 class ProductAdmin(admin.ModelAdmin):
     model = Product
     prepopulated_fields = {
-        "slug": ('product_name',)
+        "slug": ('product_name',),
     }
-    list_display = ['product_name', 'short_description']
+    list_display = ['product_name', 'short_description', 'get_price',
+                    'get_offer_price']
     list_display_links = ['product_name']
     ordering = ['-id']
     list_per_page = 30
