@@ -5,6 +5,9 @@ from .models import Product, ProductVariation
 class ProductVariationAdmin(admin.TabularInline):
     model = ProductVariation
     extra = 1
+    prepopulated_fields = {
+        "slug": ('variation_name',),
+    }
 
 
 class ProductAdmin(admin.ModelAdmin):

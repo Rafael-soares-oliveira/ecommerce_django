@@ -2,32 +2,49 @@
 
 {% load i18n %}
 
-{% block title %}{{ product.product_name }} | {% endblock title %}
+{% block title %}{{ products.product_name }} | {% endblock title %}
 
 {% block content %}
-
-    <div class="product">
-        <div class="product-image">
-            <a href="#">
-                <img src="{{ product.product_image.url }}" alt="Card image cap">
-            </a>
-        </div>
-        <div>
-            <h5 class="product-name"><a href="#">{{ product.get_short_name }}</a></h5>
-            <div class='price'>
-                {% if product.offer_price %}
-                    <span class="product-price-muted">
-                        {{ product.get_price }}
-                    </span>
-                    <span class="product-price">
-                        {{ product.get_offer_price }}
-                    </span>
+<div class="main-content-list">
+    <div class="product-detail">
+        <div class='detail-image-price'>
+            <div class="product-detail-image">
+                <img src="{{ products.product_image.url }}" alt="Card image cap">
+            </div>
+            <div class='price-detail'>
+                <h5 class="product-detail-name">
+                    {{ products.product_name }}
+                </h5>
+                {% if products.get_offer_price > 0 %}
+                    <span id="variation-price" class="product-detail-price-muted"></span>
+                    <span id="variation-offer-price" class="product-detail-price"></span>
                 {% else %}
-                    <span class="product-price">
-                        {{ product.get_price }}
+                    <span id="variation-price" class="product-detail-price">
+                        {{ products.get_price }}
                     </span>
                 {% endif %}
+                <form action="/addtocart/" id="form-add-to-cart">
+                    <div class="form-group">
+                        <select name="vid" id="select-variations" class="form-control">
+                            {% for variation in variations %}
+                                <option data-price="{{ variation.get_price }}" data-offer-price="{{ variation.get_offer_price }}" value="{{ variation.id }}">
+                                    <span class="detail-option">{{ variation.variation_name }}</span>
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </form>
+                <form class='add-cart-button' action="">
+                    <button type="submit">
+                        <i class="fas fa-shopping-cart"></i>
+                        {% translate "Add Cart" %}
+                    </button>
+                </form>
             </div>
         </div>
+        <div class="detail-description">
+            <span>{{ products.long_description | linebreaksbr }}</span>
+        </div>
     </div>
+</div>
 {% endblock content %}

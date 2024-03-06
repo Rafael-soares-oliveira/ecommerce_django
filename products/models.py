@@ -40,9 +40,6 @@ class Product(models.Model):
         )
     )
 
-    def get_short_name(self):
-        return f'{(self.product_name)[:55]}...'
-
     # Resize image
     @staticmethod
     def resize_image(image, new_width=800, new_height=800):
@@ -57,16 +54,16 @@ class Product(models.Model):
             quality=50,
         )
 
+    def get_short_name(self):
+        return f'{(self.product_name)[:55]}...'
+
     # slugify the product name / resize image
     def save(self, *args, **kwargs):
         if not self.slug:
             slug = f'{slugify(self.product_name)}'
             self.slug = slug
 
-        if self.product_image:
-            self.resize_image(self.product_image, 800)
-
-        super().save(force_update=True, *args, **kwargs)
+        super().save(*args, **kwargs)
 
     def get_min_price(self):
         price = ProductVariation.objects.filter(
@@ -111,9 +108,12 @@ class ProductVariation(models.Model):
     )
     variation_name = models.CharField(
         max_length=50,
-        blank=True,
-        null=True,
+        default="",
         verbose_name=_('Variation Name')
+    )
+    slug = models.SlugField(
+        max_length=65,
+        default='',
     )
     price = models.FloatField(
         default=0,
@@ -129,10 +129,17 @@ class ProductVariation(models.Model):
     )
 
     def get_price(self):
-        return f'R$ {self.price:.2f}'.replace('.', ',')
+        return convert_str(self.price)
 
     def get_offer_price(self):
-        return f'R$ {self.offer_price:.2f}'.replace('.', ',')
+        return convert_str(self.offer_price)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            slug = f'{slugify(self.variation_name)}'
+            self.slug = slug
+
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = _('Product Variation')
